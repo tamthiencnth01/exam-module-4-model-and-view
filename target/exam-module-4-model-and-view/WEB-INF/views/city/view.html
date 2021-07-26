@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/resource/css/bootstrap.css">
+    <link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resource/css/style.css">
+</head>
+<body>
+<h2>Chi Tiết Thành Phố</h2>
+<a href="/">List City</a>
+<form th:action="@{/view-city}" th:object="${city}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <p>Tên Thành Phố: <span th:text="*{name}"></span></p>
+    <p>Diện Tích: <span th:text="*{area}"></span></p>
+    <p>Dân Số: <span th:text="*{population}"></span></p>
+    <p>GDP: <span  th:text="*{gdp}"></span></p>
+    <p>Chi Tiết: <span   th:text="*{description}"></span></p>
+    <p>Quốc Gia: <span  th:text="*{country.name}"></span></p>
+
+    <a th:href="@{/edit-city/__${id}__ }">Edit</a>
+    <a th:href="@{/delete-city/__${id}__ }">Delete</a>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/resource/css/bootstrap.css">
+    <link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resource/css/style.css">
+</head>
+<body>
+
+    <h2>Khởi Tạo Thành Phố</h2>
+    <a href="/">List City</a>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <form th:action="@{/create-city}" th:object="${city}" method="post">
+        <table class="table table-hover">
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}"/></td>
+            </tr>
+            <tr>
+                <td>Diện Tích:</td>
+                <td><input type="number" th:field="*{area}"/></td>
+            </tr>
+            <tr>
+                <td>Dân Số:</td>
+                <td><input type="number" th:field="*{population}"/></td>
+            </tr>
+            <tr>
+                <td>GDP:</td>
+                <td><input type="number" th:field="*{gdp}"/></td>
+            </tr>
+            <tr>
+                <td>GDP:</td>
+                <td><textarea th:field="*{description}"/></td>
+            </tr>
+            <tr>
+                <td>Quốc Gia:</td>
+                <td>
+                    <select th:field="*{country}">
+                        <option th:each="p : ${countries}" th:value="${p.id}" th:text="${p.name}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Create City"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

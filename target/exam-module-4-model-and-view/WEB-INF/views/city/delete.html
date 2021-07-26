@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/resource/css/bootstrap.css">
+    <link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resource/css/style.css">
+</head>
+<body>
+    <h1>Delete city</h1>
+    <h2>Are you sure?</h2>
+    <p>
+        <a href="/">City list</a>
+    </p>
+    <form th:action="@{/delete-city}" th:object="${city}" method="post">
+        <input th:type="hidden" name="id" th:field="*{id}">
+        <table class="table table-hover">
+            <tr>
+                <td>Name:</td>
+                <td th:text="${city.name}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Delete City"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
